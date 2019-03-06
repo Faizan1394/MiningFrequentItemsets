@@ -4,7 +4,7 @@
 #include <set>
 #include <map>
 #include <fstream>
-#define threshold 1
+#define threshold 10
 
 using namespace std;
 class Apriori{
@@ -27,7 +27,7 @@ private:
   int totalBuckets = 0;
   int numFrequent = 0;
 
-  string fileName = "test.data";
+  string fileName = "netflix.data";
   ifstream inputFile;
 
 

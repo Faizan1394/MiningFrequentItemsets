@@ -23,6 +23,7 @@ void Apriori::findFrequent(){
   totalItems++; // item numbers start at 0 so increase by 1 to get total items
   items = new int[totalItems];
 
+
   //initialize all element counts to 0 to start with
   for(int i =0; i < totalItems; i++){
     items[i] = 0;
@@ -84,7 +85,7 @@ void Apriori::findFrequent(){
   // lower triangular matrix can have a total of this many
   // non zero elements
   totalNumPairs = ((1+numFrequent)*numFrequent)/2;
-  totalNumPairs +=1;
+  //totalNumPairs +=1;
   //array holding count for pairs of itemsPuring
   //triangularMatrix method used to determine index in array for each pair
   itemPairs = new int[totalNumPairs];
@@ -154,7 +155,8 @@ void Apriori::printPairs(){
   int origI = -1;
   int origJ = -1;
 
-  for(int i = 1; i < totalNumPairs; i++){
+  int totalFrequentPairs = 0;
+  for(int i = 0; i < totalNumPairs; i++){
     if(itemPairs[i] >= supThresh){
       for(auto original : renumbering){
         if(original.second == c)
@@ -163,6 +165,7 @@ void Apriori::printPairs(){
           origJ = original.first;
       }
       cout <<"{" << origJ << ","  << origI << "} -> frequency = " << itemPairs[i]  << endl;
+      totalFrequentPairs++;
     }
     if(c == numFrequent){
       r += 1;
@@ -173,6 +176,7 @@ void Apriori::printPairs(){
     }
 
   }
+  cout << "total number of frequent pairs = " << totalFrequentPairs << endl;
 }
 
 
